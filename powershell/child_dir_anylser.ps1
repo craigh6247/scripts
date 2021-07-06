@@ -1,4 +1,4 @@
-$FilterDate = (Get-Date).AddDays(-30)
+ $FilterDate = (Get-Date).AddDays(-30)
  $targetDir = 'C:\Windows\System32\spool\'
  $targetReg= 'Software\Microsoft\Windows\CurrentVersion\Run'
  $filehash = (Get-FileHash -Algorithm SHA1 -LiteralPath (Get-ChildItem -Recurse -File  -ErrorAction SilentlyContinue $targetDir|Where-Object {$_.LastWriteTime -ge $filterDate}|Sort-Object LastWriteTime).fullname |Format-Table -autosize -Property Hash, Path)
